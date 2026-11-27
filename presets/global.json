@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "sets": {
+    "otros_rubros_no_it": [
+      "arquitecto",
+      "vendedor",
+      "ventas",
+      "comercial",
+      "telemarketer",
+      "cobranzas",
+      "chofer",
+      "operario",
+      "operaria",
+      "manufactura",
+      "producción",
+      "limpieza",
+      "maestranza",
+      "cocina",
+      "mozo",
+      "cadete",
+      "repositor",
+      "cajero",
+      "almacén",
+      "logística",
+      "abogado",
+      "recursos humanos",
+      "rrhh",
+      "recruiter",
+      "selector",
+      "comercio exterior",
+      "comprador",
+      "marketing",
+      "community manager",
+      "enfermero",
+      "médico",
+      "albañil",
+      "arquitectura",
+      "preventista",
+      "viajante",
+      "corredor",
+      "promotor",
+      "promotora",
+      "estética",
+      "peluquería"
+    ]
+  },
+  "groups": [
+    {
+      "id": "senior_gerencial",
+      "label": "Excluir puestos Senior y gerenciales",
+      "default": true,
+      "title": [
+        "senior",
+        "sr",
+        "sr.",
+        "semi senior",
+        "ssr",
+        "lead",
+        "líder",
+        "gerente",
+        "jefe",
+        "director"
+      ],
+      "desc": [
+        "desarrollador senior",
+        "desarrolladora senior",
+        "desarrollador/a senior",
+        "desarrollador/ra senior",
+        "developer senior",
+        "senior developer",
+        "analista senior",
+        "consultor senior",
+        "consultora senior",
+        "consultor/a senior",
+        "perfil senior",
+        "nivel senior",
+        "seniority: senior",
+        "seniority senior",
+        "semi senior",
+        "semi-senior",
+        "semisenior",
+        "ssr",
+        "tech lead",
+        "team lead",
+        "líder técnico"
+      ]
+    },
+    {
+      "id": "solo_comision",
+      "label": "Excluir trabajos solo a comisión",
+      "default": true,
+      "title": [
+        "a comisión",
+        "por comisión",
+        "comisionable"
+      ],
+      "desc": [
+        "a comisión",
+        "100% comisión",
+        "solo comisión",
+        "comisionable",
+        "trabajo por comisión",
+        "empleo por comisión",
+        "ingresos por comisión",
+        "empleo comisionable"
+      ]
+    },
+    {
+      "id": "remuneracion_variable",
+      "label": "Excluir remuneración variable / por objetivos",
+      "default": true,
+      "title": [],
+      "desc": [
+        "pago variable",
+        "remuneración variable",
+        "remuneración por resultados",
+        "remuneración por objetivos"
+      ]
+    },
+    {
+      "id": "estafas_venta_directa",
+      "label": "Estafas y venta directa",
+      "locked": true,
+      "default": true,
+      "title": [
+        "revendedor",
+        "revendedora",
+        "distribuidor",
+        "subdistribuidor",
+        "subdistribuidora",
+        "multinivel"
+      ],
+      "desc": [
+        "ad honorem",
+        "sin remuneración",
+        "venta directa",
+        "venta por catálogo",
+        "inversión inicial",
+        "requiere inversión",
+        "kit de inicio",
+        "compra de kit",
+        "pago de inscripción",
+        "capacitación paga",
+        "marketing multinivel",
+        "multinivel",
+        "network marketing",
+        "red de mercadeo",
+        "esquema piramidal",
+        "ingresos ilimitados",
+        "sé tu propio jefe",
+        "revendedora",
+        "revendedor"
+      ]
+    },
+    {
+      "id": "anios_minimos",
+      "label": "Excluir avisos que piden más años de experiencia",
+      "default": true,
+      "title": [],
+      "desc": [],
+      "desc_templates": [
+        "{n} años o más de experiencia",
+        "más de {n} años de experiencia",
+        "mínimo {n} años de experiencia",
+        "mínimo de {n} años de experiencia",
+        "al menos {n} años de experiencia",
+        "experiencia mínima de {n} años",
+        "experiencia de {n} años o más",
+        "+{n} años de experiencia",
+        "{n}+ años de experiencia"
+      ],
+      "plain_from": 4,
+      "max_years": 5
+    },
+    {
+      "id": "pasantias_estudiantes",
+      "label": "No busco pasantías",
+      "default": true,
+      "title": [],
+      "desc": [
+        "alumno regular",
+        "estudiante regular",
+        "certificado de alumno regular",
+        "ley de pasantías",
+        "convenio universitario",
+        "estar cursando",
+        "convenio de pasantía educativa"
+      ]
+    },
+    {
+      "id": "movilidad_excluyente",
+      "label": "Avisos que exigen movilidad propia",
+      "default_from": {
+        "path": "skills.has_vehicle",
+        "negate": true
+      },
+      "title": [],
+      "desc": [
+        "movilidad propia excluyente"
+      ]
+    },
+    {
+      "id": "registro_excluyente",
+      "label": "Avisos que exigen registro de conducir",
+      "default_from": {
+        "path": "skills.has_license",
+        "negate": true
+      },
+      "title": [],
+      "desc": [
+        "registro de conducir excluyente"
+      ]
+    },
+    {
+      "id": "viajes",
+      "label": "Avisos que exigen viajar",
+      "default_from": {
+        "path": "availability.travel",
+        "negate": true
+      },
+      "title": [],
+      "desc": [
+        "disponibilidad para viajar"
+      ]
+    },
+    {
+      "id": "mudanza",
+      "label": "Avisos que exigen radicarse",
+      "default_from": {
+        "path": "availability.relocate",
+        "negate": true
+      },
+      "title": [],
+      "desc": [
+        "disponibilidad para radicarse"
+      ]
+    },
+    {
+      "id": "residir_en_otra_ciudad",
+      "label": "Avisos que exigen residir en otra ciudad",
+      "default": true,
+      "title": [],
+      "desc": [],
+      "residir_places": [
+        "caba",
+        "buenos aires",
+        "rosario",
+        "mendoza",
+        "cordoba",
+        "capital federal",
+        "la plata",
+        "mar del plata",
+        "tucuman",
+        "salta",
+        "neuquen"
+      ]
+    }
+  ]
+}

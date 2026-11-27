@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "logistica_operaciones",
+  "label": "Logística y operaciones",
+  "description": "Depósito, logística, producción y operarios.",
+  "roles": [
+    {
+      "id": "deposito_logistica",
+      "label": "Depósito / Logística",
+      "default_enabled": true,
+      "keywords": [
+        "depósito",
+        "logística",
+        "almacén",
+        "picking",
+        "expedición",
+        "auxiliar de depósito",
+        "operador logístico"
+      ],
+      "cv_suffix": "DepositoLogistica",
+      "salary_net_suggested": null,
+      "salary_source": null,
+      "salary_hint": "Comercio CCT 130/75 o convenio de la actividad"
+    },
+    {
+      "id": "operario_produccion",
+      "label": "Operario / Producción",
+      "default_enabled": true,
+      "keywords": [
+        "operario",
+        "operaria",
+        "producción",
+        "manufactura",
+        "línea de producción",
+        "abastecimiento"
+      ],
+      "cv_suffix": "OperarioProduccion",
+      "salary_net_suggested": null,
+      "salary_source": null,
+      "salary_hint": "Comercio CCT 130/75 o convenio de la actividad"
+    }
+  ],
+  "required_title_extra": [],
+  "exclude_title_sets": [],
+  "exclude_title_keywords": [
+    "contable",
+    "contador"
+  ],
+  "exclude_desc_keywords": [],
+  "search_categories": [
+    "logistica-y-transporte",
+    "produccion-y-manufactura"
+  ],
+  "experience_terms": [
+    "dep[oó]sito",
+    "log[ií]stica",
+    "almac[eé]n",
+    "picking",
+    "expedici[oó]n",
+    "producci[oó]n",
+    "manufactura",
+    "operari[oa]"
+  ],
+  "experience_priority": 60,
+  "experience_default": "Sí, tengo experiencia en depósito y logística.",
+  "group_defaults": {}
+}

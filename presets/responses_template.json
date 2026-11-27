@@ -1,0 +1,124 @@
+[
+  {
+    "id": "salario",
+    "pattern": "pretensi[oó]n|remuneraci[oó]n|salario|sueldo|expectativa salarial|cu[aá]nto (ganar|cobrar)",
+    "answer": "{{derived.salary_fallback_net}}"
+  },
+  {
+    "id": "telefono",
+    "pattern": "(?s)^(?!.*(experiencia|trabaj|venta|llamad|atenci[oó]n)).*(tel[eé]fono|celular|whats ?app|n[uú]mero de contacto)",
+    "answer": "Teléfono: {{personal.phone}} — Resido en {{derived.city_label}}, Argentina."
+  },
+  {
+    "id": "residencia",
+    "pattern": "residencia|residir|reside|resid[ií]s|domicilio|d[oó]nde (viv|resid)|zona de residencia|barrio|localidad",
+    "answer": "Resido en {{derived.city_label}}, con disponibilidad para {{derived.modalities_text}}."
+  },
+  {
+    "id": "turnos",
+    "pattern": "(?s)^(?!.*(viaj|radic|mud[aá]|reubic|reloca|ingl[eé]s|english)).*(turno|rotativ|guardia|fines? de semana|feriados|\\d ?x ?\\d)",
+    "answer": "{{choice.shifts_weekends.answer}}",
+    "option": "{{choice.shifts_weekends.option}}"
+  },
+  {
+    "id": "disponibilidad",
+    "pattern": "(?s)^(?!.*(viaj|radic|mud[aá]|reubic|reloca|ingl[eé]s|english)).*(disponibilidad|full[ -]?time|part[ -]?time|jornada|tiempo completo|medio tiempo|horario|esquema (de )?(trabajo|laboral|h[ií]brido|presencial|remoto)|inmediat|incorporar(te|se))",
+    "answer": "{{choice.schedule.answer}} {{choice.immediate.answer}}",
+    "option": "Sí",
+    "when": {
+      "path": "availability.schedule",
+      "equals": "ambos"
+    }
+  },
+  {
+    "id": "disponibilidad",
+    "pattern": "(?s)^(?!.*(viaj|radic|mud[aá]|reubic|reloca|ingl[eé]s|english)).*(disponibilidad|full[ -]?time|part[ -]?time|jornada|tiempo completo|medio tiempo|horario|esquema (de )?(trabajo|laboral|h[ií]brido|presencial|remoto)|inmediat|incorporar(te|se))",
+    "answer": "{{choice.schedule.answer}} {{choice.immediate.answer}}",
+    "when": {
+      "not": {
+        "path": "availability.schedule",
+        "equals": "ambos"
+      }
+    }
+  },
+  {
+    "id": "movilidad",
+    "pattern": "movilidad|movil[ií]z|medio de transporte|traslado propio",
+    "answer": "{{choice.has_vehicle.answer}}",
+    "option": "{{choice.has_vehicle.option}}"
+  },
+  {
+    "id": "registro",
+    "pattern": "registro de conducir|licencia de conducir|carnet de conducir|carn[eé] de conducir|conducir",
+    "answer": "{{choice.has_license.answer}}",
+    "option": "{{choice.has_license.option}}"
+  },
+  {
+    "id": "cv_ingles",
+    "pattern": "(\\bcv\\b|curr[ií]cul(um|o))(?:(?!nivel).){0,25}(ingl[eé]s|english)",
+    "answer": "{{choice.cv_in_english.answer}}",
+    "option": "{{choice.cv_in_english.option}}"
+  },
+  {
+    "id": "llamadas_ingles",
+    "pattern": "siente c[oó]modo haciendo llamadas en ingl[eé]s",
+    "answer": "{{choice.english_level.calls_option}}.",
+    "option": "{{choice.english_level.calls_option}}"
+  },
+  {
+    "id": "nivel_ingles",
+    "pattern": "(?s)^(?!.*(\\bcv\\b|curr[ií]cul(um|o))(?:(?!nivel).){0,25}(ingl[eé]s|english)).*(ingl[eé]s|english)",
+    "answer": "{{choice.english_level.answer}}",
+    "option": "{{choice.english_level.option}}"
+  },
+  {
+    "id": "anios_experiencia",
+    "pattern": "cu[aá]ntos a[ñn]os|a[ñn]os de experiencia|cu[aá]nta experiencia",
+    "answer": "{{skills.years_experience}}"
+  },
+  {
+    "insert": "experience_rules"
+  },
+  {
+    "id": "presentacion",
+    "pattern": "experiencia acorde|(coment|cont)[aá](me|nos)(?!\\w).*(experiencia|perfil|trayectoria|sobre (vos|ti))|(describ|present)[ií]te|pres[eé]ntate|resumen profesional|perfil profesional|(habl|cont)[aá]nos (un poco )?(de|sobre) (vos|ti)",
+    "answer": "{{skills.summary}}"
+  },
+  {
+    "id": "herramientas",
+    "pattern": "herramientas|software|paquete office|(?<!home )(?<!home-)(?<!home)office|excel|word|sistemas? (de gesti[oó]n|operativos?)|conocimientos t[eé]cnicos",
+    "answer": "{{choice.office_level.answer}}"
+  },
+  {
+    "id": "edad",
+    "pattern": "edad|cu[aá]ntos a[ñn]os ten[eé]s",
+    "answer": "{{personal.age}}"
+  },
+  {
+    "id": "estudios",
+    "pattern": "estudios|nivel educativo|nivel de estudios|secundario|terciario|universitario|t[ií]tulo|estado acad[eé]mico|graduad|egresad",
+    "answer": "{{skills.education_text}}"
+  },
+  {
+    "id": "remoto",
+    "pattern": "(?s)^(?!.*(experiencia|trabajaste|trabajado|viaj|radic|mud[aá]|reubic|reloca|ingl[eé]s|english|equip(o propio|amiento)|computadora|notebook|\\bpc\\b|internet|conexi[oó]n|espacio)).*(desde (la |tu |su )?casa|remot[oa]|teletrabaj|home[ -]?office|h[ií]brid[oa])",
+    "answer": "Sí, me interesa: busco {{derived.modalities_text}}.",
+    "option": "Sí",
+    "when": {
+      "path": "location.modalities",
+      "includes": "remoto"
+    }
+  },
+  {
+    "id": "remoto",
+    "pattern": "(?s)^(?!.*(experiencia|trabajaste|trabajado|viaj|radic|mud[aá]|reubic|reloca|ingl[eé]s|english|equip(o propio|amiento)|computadora|notebook|\\bpc\\b|internet|conexi[oó]n|espacio)).*(desde (la |tu |su )?casa|remot[oa]|teletrabaj|home[ -]?office|h[ií]brid[oa])",
+    "answer": "Busco {{derived.modalities_text}}.",
+    "option": "No",
+    "when": {
+      "not": {
+        "path": "location.modalities",
+        "includes": "remoto"
+      }
+    }
+  }
+]

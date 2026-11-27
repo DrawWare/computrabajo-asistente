@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "rubros": [
+    "it_desarrollo",
+    "it_soporte_qa_datos",
+    "administracion",
+    "atencion_cliente",
+    "ventas_comercial",
+    "logistica_operaciones",
+    "gastronomia_retail"
+  ]
+}

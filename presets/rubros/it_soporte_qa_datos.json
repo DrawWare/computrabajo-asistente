@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "id": "it_soporte_qa_datos",
+  "label": "IT — Soporte, QA y datos",
+  "description": "Help desk, soporte técnico, QA/testing, análisis de datos e implementaciones.",
+  "roles": [
+    {
+      "id": "qa",
+      "label": "QA / Testing",
+      "default_enabled": true,
+      "keywords": [
+        "qa",
+        "quality assurance",
+        "tester",
+        "testing",
+        "automatización",
+        "automation",
+        "selenium",
+        "playwright",
+        "pruebas funcionales",
+        "casos de prueba",
+        "bugs"
+      ],
+      "cv_suffix": "QA",
+      "salary_net_suggested": 1150000,
+      "salary_source": "Calibración Nov-2026 (referencia)",
+      "salary_hint": null
+    },
+    {
+      "id": "datos",
+      "label": "Análisis de datos / BI",
+      "default_enabled": true,
+      "keywords": [
+        "analista de datos",
+        "data analyst",
+        "bi",
+        "power bi",
+        "tableau",
+        "etl",
+        "sql",
+        "sql server",
+        "base de datos",
+        "estadística"
+      ],
+      "cv_suffix": "DataAnalyst",
+      "salary_net_suggested": 1150000,
+      "salary_source": "Calibración Nov-2026 (referencia)",
+      "salary_hint": null
+    },
+    {
+      "id": "implementaciones",
+      "label": "Implementaciones / ERP",
+      "default_enabled": true,
+      "keywords": [
+        "analista funcional",
+        "implementaciones",
+        "implementación",
+        "implementador",
+        "erp",
+        "odoo",
+        "sap",
+        "crm",
+        "relevamiento",
+        "sistemas"
+      ],
+      "cv_suffix": "SupportImplementation",
+      "salary_net_suggested": 1100000,
+      "salary_source": "Calibración Nov-2026 (referencia)",
+      "salary_hint": null
+    },
+    {
+      "id": "helpdesk",
+      "label": "Help desk / Soporte técnico",
+      "default_enabled": true,
+      "keywords": [
+        "help desk",
+        "helpdesk",
+        "mesa de ayuda",
+        "soporte técnico",
+        "soporte it",
+        "técnico it",
+        "customer support",
+        "redes",
+        "linux",
+        "windows server",
+        "tickets",
+        "hardware"
+      ],
+      "cv_suffix": "HelpDesk",
+      "salary_net_suggested": 1050000,
+      "salary_source": "Calibración Nov-2026 (referencia)",
+      "salary_hint": null
+    }
+  ],
+  "required_title_extra": [
+    "soporte",
+    "técnico",
+    "técnica",
+    "analista",
+    "informática",
+    "informático",
+    "IT",
+    "support",
+    "customer support",
+    "analyst",
+    "data"
+  ],
+  "exclude_title_sets": [
+    "otros_rubros_no_it"
+  ],
+  "exclude_title_keywords": [
+    "contable",
+    "contador"
+  ],
+  "exclude_desc_keywords": [
+    "sector peluquería",
+    "salón de belleza",
+    "cartera de clientes"
+  ],
+  "search_categories": [
+    "informatica-y-telecom",
+    "investigacion-y-calidad",
+    "mantenimiento-y-reparaciones-tecnicas"
+  ],
+  "experience_terms": [
+    "soporte",
+    "atenci[oó]n al cliente",
+    "help ?desk",
+    "mesa de ayuda",
+    "tickets",
+    "hardware",
+    "redes"
+  ],
+  "experience_priority": 10,
+  "experience_default": "Sí, tengo experiencia en soporte técnico y atención a usuarios.",
+  "group_defaults": {}
+}

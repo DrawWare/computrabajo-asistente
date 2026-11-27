@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "administracion",
+  "label": "Administración",
+  "description": "Administrativo, recepción, data entry y back office.",
+  "roles": [
+    {
+      "id": "administrativo",
+      "label": "Administrativo / Back office",
+      "default_enabled": true,
+      "keywords": [
+        "recepcionista",
+        "recepción",
+        "atención al cliente",
+        "administrativo",
+        "administrativa",
+        "backoffice",
+        "data entry",
+        "carga de datos",
+        "asistente"
+      ],
+      "cv_suffix": "Administrativo",
+      "salary_net_suggested": 900000,
+      "salary_source": "Calibración Nov-2026 (referencia)",
+      "salary_hint": null
+    },
+    {
+      "id": "contable_jr",
+      "label": "Contable jr / Liquidaciones",
+      "default_enabled": false,
+      "keywords": [
+        "auxiliar contable",
+        "asistente contable",
+        "contable jr",
+        "liquidación de sueldos"
+      ],
+      "cv_suffix": "ContableJr",
+      "salary_net_suggested": null,
+      "salary_source": null,
+      "salary_hint": "Sin calibrar: indicá tu pretensión; no hay referencia de convenio cargada."
+    }
+  ],
+  "required_title_extra": [],
+  "exclude_title_sets": [
+    "otros_rubros_no_it"
+  ],
+  "exclude_title_keywords": [],
+  "exclude_desc_keywords": [
+    "sector peluquería",
+    "salón de belleza",
+    "cartera de clientes"
+  ],
+  "search_categories": [
+    "administracion-y-oficina"
+  ],
+  "experience_terms": [
+    "administrativ",
+    "recepci[oó]n",
+    "data entry",
+    "carga de datos",
+    "back ?office",
+    "facturaci[oó]n"
+  ],
+  "experience_priority": 40,
+  "experience_default": "Sí, tengo experiencia en tareas administrativas.",
+  "group_defaults": {}
+}

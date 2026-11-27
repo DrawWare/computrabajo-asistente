@@ -1,0 +1,149 @@
+{
+  "english_level": {
+    "ninguno": {
+      "label": "No hablo inglés",
+      "answer": "Por el momento no tengo conocimientos de inglés.",
+      "option": "Básico",
+      "calls_option": "No, pero puedo aprender",
+      "exclude_desc": [
+        "inglés avanzado excluyente",
+        "inglés bilingüe",
+        "nivel de inglés avanzado"
+      ],
+      "block_terms": null
+    },
+    "a2": {
+      "label": "Básico (A2)",
+      "answer": "Tengo un nivel básico de inglés (A2).",
+      "option": "Básico",
+      "calls_option": "No, pero puedo aprender",
+      "exclude_desc": [
+        "inglés avanzado excluyente",
+        "inglés bilingüe",
+        "nivel de inglés avanzado"
+      ],
+      "block_terms": null
+    },
+    "b1": {
+      "label": "Intermedio (B1)",
+      "answer": "Tengo un nivel intermedio de inglés (B1).",
+      "option": "Intermedio (B1)",
+      "calls_option": "No, pero puedo aprender",
+      "exclude_desc": [
+        "inglés avanzado excluyente",
+        "inglés bilingüe",
+        "nivel de inglés avanzado"
+      ],
+      "block_terms": null
+    },
+    "b2": {
+      "label": "Intermedio-alto (B2)",
+      "answer": "Tengo un nivel intermedio-alto de inglés (B2).",
+      "option": "Intermedio-alto (B2)",
+      "calls_option": "Si, poseo conversación en ingles",
+      "exclude_desc": [
+        "inglés bilingüe"
+      ],
+      "block_terms": [
+        "ingles bilingue",
+        "c2"
+      ]
+    },
+    "c1": {
+      "label": "Avanzado (C1-C2)",
+      "answer": "Tengo un nivel avanzado de inglés (C1-C2).",
+      "option": "Avanzado o nativo (C1-C2)",
+      "calls_option": "Si, poseo conversación en ingles",
+      "exclude_desc": [],
+      "block_terms": []
+    }
+  },
+  "portuguese_advanced": {
+    "true": {
+      "exclude_desc": []
+    },
+    "false": {
+      "exclude_desc": [
+        "portugués avanzado"
+      ]
+    }
+  },
+  "office_level": {
+    "basico": {
+      "answer": "Manejo herramientas básicas de Office (Word, Excel)."
+    },
+    "intermedio": {
+      "answer": "Manejo Word y Excel a nivel intermedio."
+    },
+    "avanzado": {
+      "answer": "Manejo Office a nivel avanzado (Excel con fórmulas y tablas dinámicas)."
+    }
+  },
+  "yes_no": {
+    "true": {
+      "option": "Sí"
+    },
+    "false": {
+      "option": "No"
+    }
+  },
+  "has_vehicle": {
+    "true": {
+      "answer": "Sí, cuento con movilidad propia.",
+      "option": "Sí"
+    },
+    "false": {
+      "answer": "No cuento con movilidad propia.",
+      "option": "No"
+    }
+  },
+  "has_license": {
+    "true": {
+      "answer": "Sí, cuento con registro de conducir.",
+      "option": "Sí"
+    },
+    "false": {
+      "answer": "No cuento con registro de conducir.",
+      "option": "No"
+    }
+  },
+  "cv_in_english": {
+    "true": {
+      "answer": "Tengo el CV disponible en inglés.",
+      "option": "Sí"
+    },
+    "false": {
+      "answer": "Mi CV está en español.",
+      "option": "No"
+    }
+  },
+  "schedule": {
+    "full_time": {
+      "answer": "Busco jornada completa."
+    },
+    "part_time": {
+      "answer": "Busco jornada parcial."
+    },
+    "ambos": {
+      "answer": "Tengo disponibilidad para jornada completa y parcial."
+    }
+  },
+  "shifts_weekends": {
+    "true": {
+      "answer": "Tengo disponibilidad para turnos rotativos, guardias, fines de semana y feriados.",
+      "option": "Sí"
+    },
+    "false": {
+      "answer": "No tengo disponibilidad para turnos rotativos ni fines de semana.",
+      "option": "No"
+    }
+  },
+  "immediate": {
+    "true": {
+      "answer": "Incorporación inmediata."
+    },
+    "false": {
+      "answer": "Puedo incorporarme con preaviso."
+    }
+  }
+}

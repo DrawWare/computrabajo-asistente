@@ -1,0 +1,744 @@
+{
+  "schema_version": 1,
+  "provinces": [
+    {
+      "id": "buenos-aires",
+      "label": "Buenos Aires",
+      "ct_slug": "buenos-aires",
+      "cities": [
+        {
+          "id": "la-plata",
+          "label": "La Plata",
+          "ct_slug": "la-plata",
+          "ct_verified": false,
+          "terms": [
+            "la plata"
+          ],
+          "zones": []
+        },
+        {
+          "id": "mar-del-plata",
+          "label": "Mar del Plata",
+          "ct_slug": "mar-del-plata",
+          "ct_verified": false,
+          "terms": [
+            "mar del plata"
+          ],
+          "zones": []
+        },
+        {
+          "id": "bahia-blanca",
+          "label": "Bahía Blanca",
+          "ct_slug": "bahia-blanca",
+          "ct_verified": false,
+          "terms": [
+            "bahia blanca"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "caba",
+      "label": "CABA",
+      "ct_slug": "capital-federal",
+      "cities": [
+        {
+          "id": "caba",
+          "label": "CABA",
+          "ct_slug": "capital-federal",
+          "ct_verified": false,
+          "terms": [
+            "caba",
+            "capital federal"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "catamarca",
+      "label": "Catamarca",
+      "ct_slug": "catamarca",
+      "cities": [
+        {
+          "id": "san-fernando-catamarca",
+          "label": "San Fernando del Valle de Catamarca",
+          "ct_slug": "catamarca",
+          "ct_verified": false,
+          "terms": [
+            "catamarca"
+          ],
+          "zones": []
+        },
+        {
+          "id": "andalgala",
+          "label": "Andalgalá",
+          "ct_slug": "andalgala",
+          "ct_verified": false,
+          "terms": [
+            "andalgala"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "chaco",
+      "label": "Chaco",
+      "ct_slug": "chaco",
+      "cities": [
+        {
+          "id": "resistencia",
+          "label": "Resistencia",
+          "ct_slug": "resistencia",
+          "ct_verified": false,
+          "terms": [
+            "resistencia"
+          ],
+          "zones": []
+        },
+        {
+          "id": "roque-saenz-pena",
+          "label": "Presidencia Roque Sáenz Peña",
+          "ct_slug": "roque-saenz-pena",
+          "ct_verified": false,
+          "terms": [
+            "roque saenz pena"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "chubut",
+      "label": "Chubut",
+      "ct_slug": "chubut",
+      "cities": [
+        {
+          "id": "rawson",
+          "label": "Rawson",
+          "ct_slug": "rawson",
+          "ct_verified": false,
+          "terms": [
+            "rawson"
+          ],
+          "zones": []
+        },
+        {
+          "id": "comodoro-rivadavia",
+          "label": "Comodoro Rivadavia",
+          "ct_slug": "comodoro-rivadavia",
+          "ct_verified": false,
+          "terms": [
+            "comodoro rivadavia"
+          ],
+          "zones": []
+        },
+        {
+          "id": "trelew",
+          "label": "Trelew",
+          "ct_slug": "trelew",
+          "ct_verified": false,
+          "terms": [
+            "trelew"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "cordoba",
+      "label": "Córdoba",
+      "ct_slug": "cordoba",
+      "ct_verified": true,
+      "cities": [
+        {
+          "id": "cordoba-capital",
+          "label": "Córdoba Capital",
+          "ct_slug": "capital",
+          "ct_verified": true,
+          "terms": [
+            "cordoba"
+          ],
+          "zones": [
+            "zona sur",
+            "zona norte",
+            "nueva cordoba",
+            "centro"
+          ]
+        },
+        {
+          "id": "rio-cuarto",
+          "label": "Río Cuarto",
+          "ct_slug": "rio-cuarto",
+          "ct_verified": false,
+          "terms": [
+            "rio cuarto"
+          ],
+          "zones": []
+        },
+        {
+          "id": "villa-carlos-paz",
+          "label": "Villa Carlos Paz",
+          "ct_slug": "villa-carlos-paz",
+          "ct_verified": false,
+          "terms": [
+            "villa carlos paz"
+          ],
+          "zones": []
+        }
+      ]
+    },
+    {
+      "id": "corrientes",
+      "label": "Corrientes",
+      "ct_slug": "corrientes",
+      "cities": [
+        {
+          "id": "corrientes",
+          "label": "Corrientes",
+          "ct_slug": "corrientes",
+          "ct_verified": false,
+          "terms": [
+            "corrientes"
+          ],
+          "zones": []
+        },
+        {
+          "id": "goya",
+          "label": "Goya",
+          "ct_slug": "goya",
+          "ct_verified": false,
+          "terms": [
+            "goya"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "entre-rios",
+      "label": "Entre Ríos",
+      "ct_slug": "entre-rios",
+      "cities": [
+        {
+          "id": "parana",
+          "label": "Paraná",
+          "ct_slug": "parana",
+          "ct_verified": false,
+          "terms": [
+            "parana"
+          ],
+          "zones": []
+        },
+        {
+          "id": "concordia",
+          "label": "Concordia",
+          "ct_slug": "concordia",
+          "ct_verified": false,
+          "terms": [
+            "concordia"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "formosa",
+      "label": "Formosa",
+      "ct_slug": "formosa",
+      "cities": [
+        {
+          "id": "formosa",
+          "label": "Formosa",
+          "ct_slug": "formosa",
+          "ct_verified": false,
+          "terms": [
+            "formosa"
+          ],
+          "zones": []
+        },
+        {
+          "id": "clorinda",
+          "label": "Clorinda",
+          "ct_slug": "clorinda",
+          "ct_verified": false,
+          "terms": [
+            "clorinda"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "jujuy",
+      "label": "Jujuy",
+      "ct_slug": "jujuy",
+      "cities": [
+        {
+          "id": "san-salvador-jujuy",
+          "label": "San Salvador de Jujuy",
+          "ct_slug": "san-salvador-jujuy",
+          "ct_verified": false,
+          "terms": [
+            "san salvador de jujuy"
+          ],
+          "zones": []
+        },
+        {
+          "id": "san-pedro",
+          "label": "San Pedro",
+          "ct_slug": "san-pedro",
+          "ct_verified": false,
+          "terms": [
+            "san pedro"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "la-pampa",
+      "label": "La Pampa",
+      "ct_slug": "la-pampa",
+      "cities": [
+        {
+          "id": "santa-rosa",
+          "label": "Santa Rosa",
+          "ct_slug": "santa-rosa",
+          "ct_verified": false,
+          "terms": [
+            "santa rosa"
+          ],
+          "zones": []
+        },
+        {
+          "id": "general-pico",
+          "label": "General Pico",
+          "ct_slug": "general-pico",
+          "ct_verified": false,
+          "terms": [
+            "general pico"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "la-rioja",
+      "label": "La Rioja",
+      "ct_slug": "la-rioja",
+      "cities": [
+        {
+          "id": "la-rioja",
+          "label": "La Rioja",
+          "ct_slug": "la-rioja",
+          "ct_verified": false,
+          "terms": [
+            "la rioja"
+          ],
+          "zones": []
+        },
+        {
+          "id": "chilecito",
+          "label": "Chilecito",
+          "ct_slug": "chilecito",
+          "ct_verified": false,
+          "terms": [
+            "chilecito"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "mendoza",
+      "label": "Mendoza",
+      "ct_slug": "mendoza",
+      "cities": [
+        {
+          "id": "mendoza",
+          "label": "Mendoza",
+          "ct_slug": "mendoza",
+          "ct_verified": false,
+          "terms": [
+            "mendoza"
+          ],
+          "zones": []
+        },
+        {
+          "id": "san-rafael",
+          "label": "San Rafael",
+          "ct_slug": "san-rafael",
+          "ct_verified": false,
+          "terms": [
+            "san rafael"
+          ],
+          "zones": []
+        },
+        {
+          "id": "godoy-cruz",
+          "label": "Godoy Cruz",
+          "ct_slug": "godoy-cruz",
+          "ct_verified": false,
+          "terms": [
+            "godoy cruz"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "misiones",
+      "label": "Misiones",
+      "ct_slug": "misiones",
+      "cities": [
+        {
+          "id": "posadas",
+          "label": "Posadas",
+          "ct_slug": "posadas",
+          "ct_verified": false,
+          "terms": [
+            "posadas"
+          ],
+          "zones": []
+        },
+        {
+          "id": "obera",
+          "label": "Oberá",
+          "ct_slug": "obera",
+          "ct_verified": false,
+          "terms": [
+            "obera"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "neuquen",
+      "label": "Neuquén",
+      "ct_slug": "neuquen",
+      "cities": [
+        {
+          "id": "neuquen",
+          "label": "Neuquén",
+          "ct_slug": "neuquen",
+          "ct_verified": false,
+          "terms": [
+            "neuquen"
+          ],
+          "zones": []
+        },
+        {
+          "id": "cutral-co",
+          "label": "Cutral Có",
+          "ct_slug": "cutral-co",
+          "ct_verified": false,
+          "terms": [
+            "cutral co"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "rio-negro",
+      "label": "Río Negro",
+      "ct_slug": "rio-negro",
+      "cities": [
+        {
+          "id": "viedma",
+          "label": "Viedma",
+          "ct_slug": "viedma",
+          "ct_verified": false,
+          "terms": [
+            "viedma"
+          ],
+          "zones": []
+        },
+        {
+          "id": "bariloche",
+          "label": "San Carlos de Bariloche",
+          "ct_slug": "bariloche",
+          "ct_verified": false,
+          "terms": [
+            "bariloche"
+          ],
+          "zones": []
+        },
+        {
+          "id": "general-roca",
+          "label": "General Roca",
+          "ct_slug": "general-roca",
+          "ct_verified": false,
+          "terms": [
+            "general roca"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "salta",
+      "label": "Salta",
+      "ct_slug": "salta",
+      "cities": [
+        {
+          "id": "salta",
+          "label": "Salta",
+          "ct_slug": "salta",
+          "ct_verified": false,
+          "terms": [
+            "salta"
+          ],
+          "zones": []
+        },
+        {
+          "id": "oran",
+          "label": "Orán",
+          "ct_slug": "oran",
+          "ct_verified": false,
+          "terms": [
+            "oran"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "san-juan",
+      "label": "San Juan",
+      "ct_slug": "san-juan",
+      "cities": [
+        {
+          "id": "san-juan",
+          "label": "San Juan",
+          "ct_slug": "san-juan",
+          "ct_verified": false,
+          "terms": [
+            "san juan"
+          ],
+          "zones": []
+        },
+        {
+          "id": "rivadavia",
+          "label": "Rivadavia",
+          "ct_slug": "rivadavia",
+          "ct_verified": false,
+          "terms": [
+            "rivadavia"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "san-luis",
+      "label": "San Luis",
+      "ct_slug": "san-luis",
+      "cities": [
+        {
+          "id": "san-luis",
+          "label": "San Luis",
+          "ct_slug": "san-luis",
+          "ct_verified": false,
+          "terms": [
+            "san luis"
+          ],
+          "zones": []
+        },
+        {
+          "id": "villa-mercedes",
+          "label": "Villa Mercedes",
+          "ct_slug": "villa-mercedes",
+          "ct_verified": false,
+          "terms": [
+            "villa mercedes"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "santa-cruz",
+      "label": "Santa Cruz",
+      "ct_slug": "santa-cruz",
+      "cities": [
+        {
+          "id": "rio-gallegos",
+          "label": "Río Gallegos",
+          "ct_slug": "rio-gallegos",
+          "ct_verified": false,
+          "terms": [
+            "rio gallegos"
+          ],
+          "zones": []
+        },
+        {
+          "id": "caleta-olivia",
+          "label": "Caleta Olivia",
+          "ct_slug": "caleta-olivia",
+          "ct_verified": false,
+          "terms": [
+            "caleta olivia"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "santa-fe",
+      "label": "Santa Fe",
+      "ct_slug": "santa-fe",
+      "cities": [
+        {
+          "id": "santa-fe",
+          "label": "Santa Fe",
+          "ct_slug": "santa-fe",
+          "ct_verified": false,
+          "terms": [
+            "santa fe"
+          ],
+          "zones": []
+        },
+        {
+          "id": "rosario",
+          "label": "Rosario",
+          "ct_slug": "rosario",
+          "ct_verified": false,
+          "terms": [
+            "rosario"
+          ],
+          "zones": []
+        },
+        {
+          "id": "rafaela",
+          "label": "Rafaela",
+          "ct_slug": "rafaela",
+          "ct_verified": false,
+          "terms": [
+            "rafaela"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "santiago-del-estero",
+      "label": "Santiago del Estero",
+      "ct_slug": "santiago-del-estero",
+      "cities": [
+        {
+          "id": "santiago-del-estero",
+          "label": "Santiago del Estero",
+          "ct_slug": "santiago-del-estero",
+          "ct_verified": false,
+          "terms": [
+            "santiago del estero"
+          ],
+          "zones": []
+        },
+        {
+          "id": "la-banda",
+          "label": "La Banda",
+          "ct_slug": "la-banda",
+          "ct_verified": false,
+          "terms": [
+            "la banda"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "tierra-del-fuego",
+      "label": "Tierra del Fuego",
+      "ct_slug": "tierra-del-fuego",
+      "cities": [
+        {
+          "id": "ushuaia",
+          "label": "Ushuaia",
+          "ct_slug": "ushuaia",
+          "ct_verified": false,
+          "terms": [
+            "ushuaia"
+          ],
+          "zones": []
+        },
+        {
+          "id": "rio-grande",
+          "label": "Río Grande",
+          "ct_slug": "rio-grande",
+          "ct_verified": false,
+          "terms": [
+            "rio grande"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    },
+    {
+      "id": "tucuman",
+      "label": "Tucumán",
+      "ct_slug": "tucuman",
+      "cities": [
+        {
+          "id": "san-miguel-tucuman",
+          "label": "San Miguel de Tucumán",
+          "ct_slug": "san-miguel-tucuman",
+          "ct_verified": false,
+          "terms": [
+            "san miguel de tucuman",
+            "tucuman"
+          ],
+          "zones": []
+        },
+        {
+          "id": "yerba-buena",
+          "label": "Yerba Buena",
+          "ct_slug": "yerba-buena",
+          "ct_verified": false,
+          "terms": [
+            "yerba buena"
+          ],
+          "zones": []
+        },
+        {
+          "id": "tafi-viejo",
+          "label": "Tafí Viejo",
+          "ct_slug": "tafi-viejo",
+          "ct_verified": false,
+          "terms": [
+            "tafi viejo"
+          ],
+          "zones": []
+        }
+      ],
+      "ct_verified": false
+    }
+  ]
+}

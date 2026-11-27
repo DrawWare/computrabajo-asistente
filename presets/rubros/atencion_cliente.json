@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "atencion_cliente",
+  "label": "Atención al cliente",
+  "description": "Atención al cliente presencial, telefónica o remota (sin cobranzas ni telemarketing).",
+  "roles": [
+    {
+      "id": "atencion_cliente",
+      "label": "Atención al cliente",
+      "default_enabled": true,
+      "keywords": [
+        "atención al cliente",
+        "customer service",
+        "customer care",
+        "call center",
+        "inbound",
+        "representante de atención",
+        "operador de atención",
+        "operadora de atención",
+        "atención al público"
+      ],
+      "cv_suffix": "AtencionCliente",
+      "salary_net_suggested": null,
+      "salary_source": null,
+      "salary_hint": "Comercio CCT 130/75"
+    }
+  ],
+  "required_title_extra": [],
+  "exclude_title_sets": [],
+  "exclude_title_keywords": [
+    "outbound",
+    "telemarketer",
+    "televenta",
+    "televentas",
+    "cobranzas",
+    "recupero"
+  ],
+  "exclude_desc_keywords": [],
+  "search_categories": [
+    "atencion-a-clientes"
+  ],
+  "experience_terms": [
+    "atenci[oó]n al (cliente|p[uú]blico)",
+    "call center",
+    "customer (service|care)",
+    "inbound"
+  ],
+  "experience_priority": 30,
+  "experience_default": "Sí, tengo experiencia en atención al cliente.",
+  "group_defaults": {}
+}

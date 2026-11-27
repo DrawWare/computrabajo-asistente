@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "ventas_comercial",
+  "label": "Ventas y comercial",
+  "description": "Ejecutivos de cuentas y vendedores B2B o de salón.",
+  "roles": [
+    {
+      "id": "ejecutivo_cuentas",
+      "label": "Ejecutivo de cuentas",
+      "default_enabled": true,
+      "keywords": [
+        "ejecutivo de cuentas",
+        "ejecutiva de cuentas",
+        "account executive",
+        "ejecutivo comercial",
+        "ejecutiva comercial",
+        "asesor comercial",
+        "asesora comercial",
+        "key account"
+      ],
+      "cv_suffix": "EjecutivoCuentas",
+      "salary_net_suggested": null,
+      "salary_source": null,
+      "salary_hint": "Comercio CCT 130/75"
+    },
+    {
+      "id": "ventas_salon_b2b",
+      "label": "Vendedor de salón / B2B",
+      "default_enabled": true,
+      "keywords": [
+        "vendedor",
+        "vendedora",
+        "vendedor de salón",
+        "vendedora de salón",
+        "asesor de ventas",
+        "asesora de ventas",
+        "ventas b2b",
+        "representante de ventas"
+      ],
+      "cv_suffix": "VentasB2B",
+      "salary_net_suggested": null,
+      "salary_source": null,
+      "salary_hint": "Comercio CCT 130/75"
+    }
+  ],
+  "required_title_extra": [],
+  "exclude_title_sets": [],
+  "exclude_title_keywords": [],
+  "exclude_desc_keywords": [
+    "puerta a puerta",
+    "sin sueldo fijo"
+  ],
+  "search_categories": [
+    "ventas"
+  ],
+  "experience_terms": [
+    "ventas",
+    "comercial",
+    "cartera de clientes",
+    "b2b"
+  ],
+  "experience_priority": 50,
+  "experience_default": "Sí, tengo experiencia en ventas.",
+  "locked_groups": [
+    "solo_comision"
+  ],
+  "group_defaults": {
+    "remuneracion_variable": false
+  }
+}

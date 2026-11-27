@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "informatica-y-telecom",
+    "label": "Informática y telecomunicaciones",
+    "ct_verified": true
+  },
+  {
+    "slug": "ingenieria",
+    "label": "Ingeniería",
+    "ct_verified": true
+  },
+  {
+    "slug": "investigacion-y-calidad",
+    "label": "Investigación y calidad",
+    "ct_verified": true
+  },
+  {
+    "slug": "mantenimiento-y-reparaciones-tecnicas",
+    "label": "Mantenimiento y reparaciones técnicas",
+    "ct_verified": true
+  },
+  {
+    "slug": "atencion-a-clientes",
+    "label": "Atención a clientes",
+    "ct_verified": true
+  },
+  {
+    "slug": "administracion-y-oficina",
+    "label": "Administración y oficina",
+    "ct_verified": true
+  },
+  {
+    "slug": "diseno-y-artes-graficas",
+    "label": "Diseño y artes gráficas",
+    "ct_verified": true
+  },
+  {
+    "slug": "docencia",
+    "label": "Docencia",
+    "ct_verified": true
+  },
+  {
+    "slug": "otros",
+    "label": "Otros",
+    "ct_verified": true
+  },
+  {
+    "slug": "ventas",
+    "label": "Ventas",
+    "ct_verified": false
+  },
+  {
+    "slug": "logistica-y-transporte",
+    "label": "Logística y transporte",
+    "ct_verified": false
+  },
+  {
+    "slug": "produccion-y-manufactura",
+    "label": "Producción y manufactura",
+    "ct_verified": false
+  },
+  {
+    "slug": "comercio",
+    "label": "Comercio",
+    "ct_verified": false
+  },
+  {
+    "slug": "gastronomia",
+    "label": "Gastronomía",
+    "ct_verified": false
+  }
+]

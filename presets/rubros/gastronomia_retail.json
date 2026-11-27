@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "gastronomia_retail",
+  "label": "Gastronomía y comercio",
+  "description": "Gastronomía (mozos, cocina, barra) y cajas de comercio.",
+  "roles": [
+    {
+      "id": "comercio_caja",
+      "label": "Caja / Repositor de comercio",
+      "default_enabled": true,
+      "keywords": [
+        "cajero",
+        "cajera",
+        "vendedor de salón",
+        "vendedora de salón",
+        "repositor",
+        "repositora",
+        "empleado de comercio",
+        "empleada de comercio"
+      ],
+      "cv_suffix": "ComercioCaja",
+      "salary_net_suggested": null,
+      "salary_source": null,
+      "salary_hint": "Comercio CCT 130/75"
+    },
+    {
+      "id": "gastronomia",
+      "label": "Gastronomía (salón y cocina)",
+      "default_enabled": true,
+      "keywords": [
+        "mozo",
+        "moza",
+        "camarero",
+        "camarera",
+        "ayudante de cocina",
+        "cocinero",
+        "cocinera",
+        "bachero",
+        "bachera",
+        "barista",
+        "bartender"
+      ],
+      "cv_suffix": "Gastronomia",
+      "salary_net_suggested": null,
+      "salary_source": null,
+      "salary_hint": "Gastronómicos CCT 389/04"
+    }
+  ],
+  "required_title_extra": [],
+  "exclude_title_sets": [],
+  "exclude_title_keywords": [
+    "contable",
+    "contador"
+  ],
+  "exclude_desc_keywords": [],
+  "search_categories": [
+    "gastronomia",
+    "comercio"
+  ],
+  "experience_terms": [
+    "gastron[oó]m[ií]a",
+    "restaurant",
+    "cocina",
+    "mozo",
+    "camarer",
+    "barista",
+    "bartender",
+    "cajer",
+    "repositor"
+  ],
+  "experience_priority": 70,
+  "experience_default": "Sí, tengo experiencia en gastronomía o atención en salón.",
+  "group_defaults": {}
+}

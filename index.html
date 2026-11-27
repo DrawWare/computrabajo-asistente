@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'none'">
+  <title>Asistente de perfil del bot de Computrabajo</title>
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <noscript><p class="notice">Este asistente necesita JavaScript. Todo se procesa en tu navegador; no se envía nada a ningún servidor.</p></noscript>
+  <header class="top"><h1>Asistente de perfil</h1></header>
+  <main>
+    <nav class="tabs" role="tablist" aria-label="Secciones">
+      <button type="button" role="tab" id="tab-asistente" aria-selected="true" aria-controls="panel-asistente" tabindex="0">Asistente</button>
+      <button type="button" role="tab" id="tab-aprendizaje" aria-selected="false" aria-controls="panel-aprendizaje" tabindex="-1">Aprendizaje continuo</button>
+    </nav>
+
+    <section id="panel-asistente" role="tabpanel" aria-labelledby="tab-asistente">
+      <p id="app-status" class="status" aria-live="polite"></p>
+      <div id="progress" class="progress" role="progressbar" aria-label="Progreso del asistente" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"></div>
+      <ol id="steps-nav" class="steps-nav"></ol>
+      <div id="step-root"></div>
+      <ul id="errors" class="errors" aria-live="polite"></ul>
+      <div class="nav-buttons">
+        <button id="prev" type="button">Anterior</button>
+        <button id="next" type="button">Siguiente</button>
+      </div>
+      <div class="tools">
+        <button id="clear" type="button">Borrar mis datos de este navegador</button>
+        <label class="file-label" for="resume">Retomar desde perfil.json</label>
+        <input id="resume" type="file" accept=".json,application/json">
+      </div>
+    </section>
+
+    <section id="panel-aprendizaje" role="tabpanel" aria-labelledby="tab-aprendizaje" hidden></section>
+  </main>
+</body>
+</html>
