@@ -44,14 +44,14 @@
           <svg class="guide-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="6" width="32" height="36" rx="4" class="ic-line"/><path d="M15 16h18M15 23h18M15 30h10" class="ic-line"/><path d="M24 34v8m-5-5 5 5 5-5" class="ic-accent"/></svg>
           <div>
             <h3>1. Configurá y bajá el .zip</h3>
-            <p>Completá los 5 pasos de la pestaña <strong>Asistente</strong>. En el paso 6 tocá <strong>Descargar perfil completo (.zip)</strong>. El zip trae tu configuración y los scripts de instalación.</p>
+            <p>Completá los 5 pasos de la pestaña <strong>Asistente</strong>. En el paso 6 tocá <strong>Descargar paquete completo (.zip)</strong>. El paquete trae el motor del bot, tu configuración y los scripts de instalación.</p>
           </div>
         </li>
         <li class="guide-step">
           <svg class="guide-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="9" width="38" height="30" rx="4" class="ic-line"/><path d="M5 17h38" class="ic-line"/><path d="m12 25 5 4-5 4M21 33h10" class="ic-accent"/></svg>
           <div>
-            <h3>2. Ejecutá instalar_y_configurar en la carpeta del bot</h3>
-            <p>Descomprimí el zip <strong>dentro de la carpeta del bot</strong> (la que contiene <code>computrabajo_bot</code>). En Windows hacé doble clic en <code>instalar_y_configurar.bat</code>; en macOS o Linux ejecutá <code>chmod +x *.sh &amp;&amp; ./instalar_y_configurar.sh</code>. Instala Python, las dependencias y Chromium, e importa tu perfil.</p>
+            <h3>2. Descomprimí y ejecutá instalar_y_configurar</h3>
+            <p>Descomprimí el zip <strong>en cualquier carpeta</strong> (ya trae <code>computrabajo_bot</code> adentro). En Windows hacé doble clic en <code>instalar_y_configurar.bat</code>; en macOS o Linux ejecutá <code>chmod +x *.sh &amp;&amp; ./instalar_y_configurar.sh</code>. Instala Python, las dependencias y Chromium, e importa tu perfil.</p>
           </div>
         </li>
         <li class="guide-step">
@@ -73,7 +73,7 @@
       <details class="howto-os">
         <summary>Windows</summary>
         <ol>
-          <li>Descomprimí el zip dentro de la carpeta del bot. Queda una carpeta <code>perfil_&lt;tu-perfil&gt;</code>.</li>
+          <li>Descomprimí el zip en cualquier carpeta. Queda una carpeta <code>computrabajo-&lt;tu-perfil&gt;</code>.</li>
           <li>Doble clic en <code>instalar_y_configurar.bat</code>. Si falta Python, el script te lo avisa: instalalo desde python.org marcando «Add python.exe to PATH».</li>
           <li>Elegí [1] para iniciar sesión.</li>
           <li>Para usar el bot: doble clic en <code>iniciar_bot.bat</code>.</li>
@@ -82,8 +82,8 @@
       <details class="howto-os">
         <summary>macOS</summary>
         <ol>
-          <li>Descomprimí el zip dentro de la carpeta del bot.</li>
-          <li>En Terminal, dentro de <code>perfil_&lt;tu-perfil&gt;</code>: <code>chmod +x *.sh &amp;&amp; ./instalar_y_configurar.sh</code></li>
+          <li>Descomprimí el zip en cualquier carpeta.</li>
+          <li>En Terminal, dentro de <code>computrabajo-&lt;tu-perfil&gt;</code>: <code>chmod +x *.sh &amp;&amp; ./instalar_y_configurar.sh</code></li>
           <li>Elegí [1] para iniciar sesión.</li>
           <li>Para usar el bot: <code>./iniciar_bot.sh</code></li>
         </ol>
@@ -91,8 +91,8 @@
       <details class="howto-os">
         <summary>Linux</summary>
         <ol>
-          <li>Descomprimí el zip dentro de la carpeta del bot. Necesitás <code>python3</code> y <code>python3-venv</code>.</li>
-          <li>En una terminal, dentro de <code>perfil_&lt;tu-perfil&gt;</code>: <code>chmod +x *.sh &amp;&amp; ./instalar_y_configurar.sh</code></li>
+          <li>Descomprimí el zip en cualquier carpeta. Necesitás <code>python3</code> y <code>python3-venv</code>.</li>
+          <li>En una terminal, dentro de <code>computrabajo-&lt;tu-perfil&gt;</code>: <code>chmod +x *.sh &amp;&amp; ./instalar_y_configurar.sh</code></li>
           <li>Elegí [1] para iniciar sesión.</li>
           <li>Para usar el bot: <code>./iniciar_bot.sh</code></li>
         </ol>

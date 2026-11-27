@@ -45,7 +45,9 @@ function concat(parts) {
 }
 
 /**
- * entries: [{name, data}] con data Uint8Array o string (UTF-8). Devuelve el zip como Uint8Array.
+ * entries: [{name, data, mode?}] con data Uint8Array o string (UTF-8). Devuelve el zip como Uint8Array.
+ * V4.2: mode (permisos Unix, p. ej. 0o755) es opcional: si viene, la entrada se marca "made by Unix" y lleva los
+ * atributos externos (mode << 16) para que los .sh queden ejecutables al descomprimir. Sin mode, los bytes no cambian.
  * @param {Date} [date]
  */
 export function makeZip(entries, date = new Date()) {
@@ -53,7 +55,7 @@ export function makeZip(entries, date = new Date()) {
   const parts = [];
   const centrals = [];
   let offset = 0;
-  for (const { name, data } of entries) {
+  for (const { name, data, mode } of entries) {
     const nameBytes = enc.encode(name);
     const body = typeof data === "string" ? enc.encode(data) : data;
     const crc = crc32(body);
@@ -77,7 +79,7 @@ export function makeZip(entries, date = new Date()) {
     const central = new Uint8Array(46 + nameBytes.length);
     const cv = new DataView(central.buffer);
     cv.setUint32(0, SIG_CENTRAL, true);
-    cv.setUint16(4, 20, true);
+    cv.setUint16(4, mode === undefined ? 20 : (3 << 8) | 20, true);
     cv.setUint16(6, 20, true);
     cv.setUint16(8, FLAG_UTF8, true);
     cv.setUint16(10, 0, true);
@@ -91,7 +93,7 @@ export function makeZip(entries, date = new Date()) {
     cv.setUint16(32, 0, true);
     cv.setUint16(34, 0, true);
     cv.setUint16(36, 0, true);
-    cv.setUint32(38, 0, true);
+    cv.setUint32(38, mode === undefined ? 0 : ((0o100000 | mode) << 16) >>> 0, true);
     cv.setUint32(42, offset, true);
     central.set(nameBytes, 46);
     centrals.push(central);

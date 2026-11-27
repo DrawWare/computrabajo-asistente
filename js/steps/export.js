@@ -1,6 +1,7 @@
 // Paso 6 (6.4.4): exportar. Descargas (config.yaml, responses.json, zip del perfil), advertencias y comandos
 // para instalar el bundle. Toda la lógica está en core/export.js; acá solo DOM.
 import { buildDownloadZip, bundleFileName, commandBlocks, exportWarnings } from "../core/export.js";
+import { buildPackageZip, fetchEngineBytes, loadEngineEntries, packageFileName } from "../core/package.js";
 import { INSTALL_GUIDE } from "../core/scripts.js";
 import { buildConfig, deriveVars, renderResponses } from "../core/builder.js";
 import { toYaml } from "../core/yaml.js";
@@ -53,10 +54,11 @@ export function renderExport(root, { store, data }) {
   const downloads = el("div", { class: "export-buttons" }, [
     el("button", { type: "button", id: "dl-config", text: "Descargar config.yaml" }),
     el("button", { type: "button", id: "dl-responses", text: "Descargar responses.json" }),
-    el("button", { type: "button", id: "dl-zip", text: "Descargar perfil completo (.zip)" }),
+    el("button", { type: "button", id: "dl-zip", text: "Descargar paquete completo (.zip)" }),
+    el("button", { type: "button", id: "dl-profile", class: "secondary", text: "Solo el perfil (si ya tenés el bot instalado)" }),
     el("button", { type: "button", id: "open-guide", class: "secondary", text: "Ver instrucciones detalladas" }),
   ]);
-  const [btnConfig, btnResponses, btnZip, btnGuide] = downloads.children;
+  const [btnConfig, btnResponses, btnZip, btnProfile, btnGuide] = downloads.children;
   btnGuide.onclick = () => document.getElementById("tab-guia")?.click();
   btnConfig.onclick = () => {
     const yaml = toYaml(buildConfig(answers(), data));
@@ -68,15 +70,32 @@ export function renderExport(root, { store, data }) {
     download("responses.json", json, "application/json;charset=utf-8");
     say("responses.json descargado.");
   };
-  btnZip.onclick = () => {
+  btnZip.onclick = async () => {
+    const name = packageFileName(slug());
+    const label = btnZip.textContent;
+    btnZip.disabled = true;
+    btnZip.textContent = "Preparando…";
+    say("Preparando el paquete: descargando el motor del bot…");
+    try {
+      const engine = await loadEngineEntries(fetchEngineBytes);
+      download(name, buildPackageZip(answers(), data, nowIso(), engine), "application/zip");
+      say(`${name} descargado. Descomprimilo en cualquier carpeta y seguí LEEME.txt.`);
+    } catch (err) {
+      say(`No se pudo armar el paquete: ${err.message}. Si ya tenés el bot instalado, usá «Solo el perfil».`);
+    } finally {
+      btnZip.disabled = false;
+      btnZip.textContent = label;
+    }
+  };
+  btnProfile.onclick = () => {
     const name = bundleFileName(slug());
     download(name, buildDownloadZip(answers(), data, nowIso()), "application/zip");
-    say(`${name} descargado. Incluye los scripts instalar_y_configurar e iniciar_bot: seguí los pasos de abajo.`);
+    say(`${name} descargado (perfil y scripts, sin el motor). Para importarlo, usá los comandos de abajo.`);
   };
 
   const howto = el("details", { class: "howto", id: "export-howto" }, [
     el("summary", { text: "¿Cómo se instala y usa?" }),
-    el("p", { text: "El zip trae scripts que instalan todo e importan tu perfil. Elegí tu sistema:" }),
+    el("p", { text: "El paquete trae el motor del bot, tu perfil y scripts que instalan todo. Elegí tu sistema:" }),
     ...INSTALL_GUIDE.map((os) => el("details", { class: "howto-os" }, [
       el("summary", { text: os.title }),
       el("ol", {}, os.steps.map((s) => el("li", { text: s }))),
@@ -119,7 +138,7 @@ export function renderExport(root, { store, data }) {
   paint();
 
   const steps = el("ol", { class: "export-steps" }, [
-    el("li", { text: "Descargá el zip del perfil y guardalo en Descargas." }),
+    el("li", { text: "Descargá «Solo el perfil» y guardalo en Descargas (el paquete completo ya trae todo para instalar)." }),
     el("li", { text: "Abrí una terminal en la carpeta del bot y ejecutá el comando de tu sistema." }),
     el("li", { text: `Iniciá sesión con: python main.py --profile ${slug()} --login` }),
     el("li", { text: `Probá sin postular: python main.py --profile ${slug()} --dry-run --limit 3` }),
@@ -132,7 +151,7 @@ export function renderExport(root, { store, data }) {
     downloads,
     howto,
     el("section", { class: "export-install", "aria-labelledby": "export-install-title" }, [
-      el("h3", { id: "export-install-title", text: "Instalación manual por comandos (alternativa)" }),
+      el("h3", { id: "export-install-title", text: "Solo el perfil: importarlo con comandos (si ya tenés el bot)" }),
       el("div", { class: "export-tabs-wrap" }, [tabs, copy]),
       pre,
       steps,
