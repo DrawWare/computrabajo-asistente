@@ -1,6 +1,7 @@
 // Paso 6 (6.4.4): exportar. Descargas (config.yaml, responses.json, zip del perfil), advertencias y comandos
 // para instalar el bundle. Toda la lógica está en core/export.js; acá solo DOM.
-import { buildBundleZip, bundleFileName, commandBlocks, exportWarnings } from "../core/export.js";
+import { buildDownloadZip, bundleFileName, commandBlocks, exportWarnings } from "../core/export.js";
+import { INSTALL_GUIDE } from "../core/scripts.js";
 import { buildConfig, deriveVars, renderResponses } from "../core/builder.js";
 import { toYaml } from "../core/yaml.js";
 
@@ -53,8 +54,10 @@ export function renderExport(root, { store, data }) {
     el("button", { type: "button", id: "dl-config", text: "Descargar config.yaml" }),
     el("button", { type: "button", id: "dl-responses", text: "Descargar responses.json" }),
     el("button", { type: "button", id: "dl-zip", text: "Descargar perfil completo (.zip)" }),
+    el("button", { type: "button", id: "open-guide", class: "secondary", text: "Ver instrucciones detalladas" }),
   ]);
-  const [btnConfig, btnResponses, btnZip] = downloads.children;
+  const [btnConfig, btnResponses, btnZip, btnGuide] = downloads.children;
+  btnGuide.onclick = () => document.getElementById("tab-guia")?.click();
   btnConfig.onclick = () => {
     const yaml = toYaml(buildConfig(answers(), data));
     download("config.yaml", yaml, "text/yaml;charset=utf-8");
@@ -67,9 +70,18 @@ export function renderExport(root, { store, data }) {
   };
   btnZip.onclick = () => {
     const name = bundleFileName(slug());
-    download(name, buildBundleZip(answers(), data, nowIso()), "application/zip");
-    say(`${name} descargado. Seguí los pasos de abajo para instalarlo.`);
+    download(name, buildDownloadZip(answers(), data, nowIso()), "application/zip");
+    say(`${name} descargado. Incluye los scripts instalar_y_configurar e iniciar_bot: seguí los pasos de abajo.`);
   };
+
+  const howto = el("details", { class: "howto", id: "export-howto" }, [
+    el("summary", { text: "¿Cómo se instala y usa?" }),
+    el("p", { text: "El zip trae scripts que instalan todo e importan tu perfil. Elegí tu sistema:" }),
+    ...INSTALL_GUIDE.map((os) => el("details", { class: "howto-os" }, [
+      el("summary", { text: os.title }),
+      el("ol", {}, os.steps.map((s) => el("li", { text: s }))),
+    ])),
+  ]);
 
   // Caja de comandos con pestañas: una por sistema, con botón "Copiar".
   const cmds = () => commandBlocks(slug());
@@ -118,8 +130,9 @@ export function renderExport(root, { store, data }) {
     el("p", { text: "El zip se arma en este navegador. Tus respuestas no se envían a ningún servidor." }),
     warnBox,
     downloads,
+    howto,
     el("section", { class: "export-install", "aria-labelledby": "export-install-title" }, [
-      el("h3", { id: "export-install-title", text: "Instalar el perfil en el bot" }),
+      el("h3", { id: "export-install-title", text: "Instalación manual por comandos (alternativa)" }),
       el("div", { class: "export-tabs-wrap" }, [tabs, copy]),
       pre,
       steps,

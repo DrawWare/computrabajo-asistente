@@ -3,6 +3,7 @@
 import { buildConfig, buildCategories, buildProfileJson, deriveVars, renderResponses } from "./builder.js";
 import { toYaml } from "./yaml.js";
 import { makeZip } from "./zip.js";
+import { buildScripts } from "./scripts.js";
 
 export const PLACEHOLDER_RE = /\[COMPLETAR[^\]]*\]/gi; // mismo criterio que questions.PLACEHOLDER_RE
 
@@ -14,7 +15,13 @@ export function leemeText(slug) {
   return [
     `Perfil "${slug}" del asistente web de Computrabajo`,
     "",
-    "Instalación (una vez):",
+    "Forma rápida (recomendada):",
+    "  1. Descomprimí este zip DENTRO de la carpeta del bot (la que contiene computrabajo_bot/).",
+    "  2. Windows: doble clic en instalar_y_configurar.bat. macOS/Linux: chmod +x *.sh && ./instalar_y_configurar.sh",
+    "     (instala Python deps y Chromium, importa el perfil y te ofrece iniciar sesión o probar).",
+    "  3. Después, para usar el bot: iniciar_bot.bat (Windows) o ./iniciar_bot.sh (macOS/Linux).",
+    "",
+    "Forma manual. Instalación (una vez):",
     "  1. Instalá Python 3.11 o superior (python.org).",
     "  2. Desde la carpeta computrabajo_bot/ del bot:",
     "       pip install -r requirements.txt",
@@ -51,6 +58,17 @@ export function buildBundleFiles(answers, data, nowIso) {
 /** Zip del bundle (método STORE, nombres UTF-8). */
 export function buildBundleZip(answers, data, nowIso, date = new Date()) {
   return makeZip(buildBundleFiles(answers, data, nowIso), date);
+}
+
+/** V3.5: archivos del zip que descarga el paso 6: el bundle (4) + scripts de instalación y uso (4). */
+export function buildDownloadFiles(answers, data, nowIso) {
+  const slug = deriveVars(answers, data).slug;
+  return [...buildBundleFiles(answers, data, nowIso), ...buildScripts(slug)];
+}
+
+/** V3.5: zip que descarga el paso 6 (8 archivos). `main.py --import-bundle` acepta y descarta los scripts. */
+export function buildDownloadZip(answers, data, nowIso, date = new Date()) {
+  return makeZip(buildDownloadFiles(answers, data, nowIso), date);
 }
 
 /**

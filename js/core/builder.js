@@ -331,14 +331,31 @@ function experienceRules(answers, data) {
   }));
 }
 
+export const KNOWLEDGE_PREFIX = "(conocimientos?|manejo|dominio)( (previos?|b[aá]sicos?|avanzados?|s[oó]lidos?))? (de|en|con|sobre) .*";
+
+/** V3.4: "¿Tenés conocimientos de <término del rubro>?" => sí (espejo de profile_builder._knowledge_rules). */
+function knowledgeRules(answers, data) {
+  const presets = [...(answers.presets ?? [])].sort(
+    (a, b) => data.rubros[a].experience_priority - data.rubros[b].experience_priority,
+  );
+  return presets.map((pid) => ({
+    id: `conocimiento:${pid}`,
+    pattern: `${KNOWLEDGE_PREFIX}(${data.rubros[pid].experience_terms.join("|")})`,
+    answer: `Sí, tengo conocimientos en ese tema por mi experiencia en ${data.rubros[pid].label}.`,
+    option: "Sí",
+  }));
+}
+
+const INSERTS = { experience_rules: experienceRules, knowledge_rules: knowledgeRules };
+
 /** responses.json generado (S2), en el orden de la plantilla S8. */
 export function renderResponses(answers, data) {
   const derived = deriveVars(answers, data);
   const rules = [];
-  for (const entry of data.template) {
+  for (const entry of [...data.template, ...(data.general ?? [])]) {
     if (has(entry, "insert")) {
-      if (entry.insert !== "experience_rules") throw new Error(`insert desconocido: ${entry.insert}`);
-      for (const rule of experienceRules(answers, data)) {
+      if (!has(INSERTS, entry.insert)) throw new Error(`insert desconocido: ${entry.insert}`);
+      for (const rule of INSERTS[entry.insert](answers, data)) {
         rule.answer = render(rule.answer, answers, derived, data.choices);
         rules.push(rule);
       }

@@ -51,7 +51,9 @@
           "ct_verified": false,
           "terms": [
             "caba",
-            "capital federal"
+            "capital federal",
+            "buenos aires",
+            "amba"
           ],
           "zones": []
         }
@@ -164,7 +166,8 @@
           "ct_slug": "capital",
           "ct_verified": true,
           "terms": [
-            "cordoba"
+            "cordoba",
+            "cordoba capital"
           ],
           "zones": [
             "zona sur",
@@ -628,7 +631,8 @@
           "ct_slug": "rosario",
           "ct_verified": false,
           "terms": [
-            "rosario"
+            "rosario",
+            "santa fe"
           ],
           "zones": []
         },

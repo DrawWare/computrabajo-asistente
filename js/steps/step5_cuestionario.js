@@ -59,6 +59,30 @@ export function probeQuestion(answers, data, question, options = []) {
   return { ruleId: rule ? rule.id : null, answer, pending: answer === null };
 }
 
+/** Ejemplos de 1 clic para "Probar una pregunta" (V3.4). */
+export const PROBE_EXAMPLES = [
+  { question: "¿Cuál es tu pretensión salarial neta mensual?", options: [] },
+  { question: "¿Tenés disponibilidad para incorporación inmediata?", options: ["Sí", "No"] },
+  { question: "¿Contás con nivel avanzado de inglés?", options: ["Sí", "No"] },
+  { question: "¿Tenés experiencia previa en el puesto?", options: ["Sí, tengo experiencia", "No"] },
+];
+
+export const NO_MATCH_MSG =
+  "Ninguna regla automática aplica todavía: el bot guardará esta pregunta en pendientes.csv sin arriesgar una "
+  + "respuesta incorrecta, y luego podrás responderla desde la pestaña Aprendizaje.";
+
+/** Textos del resultado de probeQuestion: [línea de regla, línea de respuesta]. */
+export function probeMessage(result, hasOptions) {
+  if (result.pending) {
+    const rule = result.ruleId
+      ? `La regla «${result.ruleId}» matchea, pero no hay una opción segura entre las ofrecidas.`
+      : "Sin regla para esta pregunta.";
+    return [rule, NO_MATCH_MSG];
+  }
+  const rule = result.ruleId ? `Regla: ${result.ruleId}.` : "Respuesta calculada por tu ubicación.";
+  return [rule, `${hasOptions ? "Opción que elegiría" : "Respuesta"}: ${result.answer}`];
+}
+
 registerStepRule("cuestionario", validateCuestionario);
 
 // ---------------------------------------------------------------- DOM
@@ -158,13 +182,19 @@ export function renderStep5(root, { store, data }) {
       return;
     }
     const options = probeOpts.value.split(/\r?\n/).map((o) => o.trim()).filter(Boolean);
-    const r = probeQuestion(ans(), data, q, options);
-    const rule = r.ruleId ? `Regla: ${r.ruleId}.` : "Ninguna regla matchea.";
-    const what = r.pending
-      ? "Respuesta: ninguna segura (quedaría pendiente)."
-      : `${options.length ? "Opción" : "Respuesta"}: ${r.answer}`;
+    const [rule, what] = probeMessage(probeQuestion(ans(), data, q, options), options.length > 0);
     probeOut.replaceChildren(el("p", { text: rule }), el("p", { text: what }));
   });
+  const examples = el("div", { class: "examples", role: "group", "aria-label": "Ejemplos para probar" },
+    PROBE_EXAMPLES.map((ex) => {
+      const b = el("button", { type: "button", text: ex.options.length ? `${ex.question} (${ex.options.join(" / ")})` : ex.question });
+      b.addEventListener("click", () => {
+        probeQ.value = ex.question;
+        probeOpts.value = ex.options.join("\n");
+        probeBtn.click();
+      });
+      return b;
+    }));
 
   root.replaceChildren(
     el("h2", { text: "5. Cuestionario rápido" }),
@@ -180,7 +210,8 @@ export function renderStep5(root, { store, data }) {
     expWrap,
     el("section", { "aria-label": "Probar una pregunta" }, [
       el("h3", { text: "Probar una pregunta" }),
-      el("p", { class: "muted", text: "Escribí una pregunta de un formulario para ver qué respondería el bot. Opciones opcionales, una por línea." }),
+      el("p", { class: "muted", text: "Escribí una pregunta de un formulario para ver qué respondería el bot, o probá un ejemplo con un clic. Opciones opcionales, una por línea." }),
+      examples,
       el("div", { class: "field" }, [el("label", { for: "probe-q", text: "Pregunta" }), probeQ]),
       el("div", { class: "field" }, [el("label", { for: "probe-opts", text: "Opciones (una por línea)" }), probeOpts]),
       probeBtn,

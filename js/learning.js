@@ -43,6 +43,7 @@ export function initLearning(root) {
   const dlBtn = el("button", { type: "button", id: "learn-download", text: "Descargar responses.json actualizado" });
 
   root.replaceChildren(
+    el("h2", { text: "Aprendizaje continuo y métricas" }),
     el("p", { class: "notice", text: PRIVACY_MSG }),
     el("div", { class: "tools" }, [
       el("label", { class: "file-label", for: "learn-csv", text: "pendientes.csv" }),

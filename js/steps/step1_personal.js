@@ -2,6 +2,44 @@
 // renderStep1 solo toca el DOM dentro de la función (el módulo se puede importar sin navegador).
 import { registerStepRule } from "../core/validate.js";
 import { createChips } from "../ui/chips.js";
+import { normalize } from "../core/normalize.js";
+
+/** Términos de residencia sugeridos para una localidad (presets/geo_ar.json). [] si no hay localidad conocida. */
+export function suggestedHomeTerms(data, provinceId, cityId) {
+  const prov = data.geo.provinces.find((p) => p.id === provinceId);
+  const city = prov?.cities.find((c) => c.id === cityId);
+  return city ? [...city.terms] : [];
+}
+
+const termSet = (terms) => [...new Set((terms ?? []).map(normalize))].sort();
+
+/** true si dos listas de términos son iguales para el bot (sin tildes, mayúsculas ni orden). */
+export function sameTerms(a, b) {
+  const x = termSet(a);
+  const y = termSet(b);
+  return x.length === y.length && x.every((t, i) => t === y[i]);
+}
+
+/**
+ * Términos al cambiar de localidad: la sugerencia nueva reemplaza la lista solo si el usuario no la personalizó
+ * (vacía o igual a la sugerencia anterior). Si la personalizó, se conserva.
+ */
+export function nextHomeTerms(current, previousSuggested, newSuggested) {
+  const cur = current ?? [];
+  if (!newSuggested?.length) return [...cur];
+  if (!cur.length || sameTerms(cur, previousSuggested)) return [...newSuggested];
+  return [...cur];
+}
+
+export const HOME_TERMS_HELP = {
+  purpose: "Sirven para dos cosas: filtrar avisos presenciales o híbridos fuera de tu zona y responder las preguntas de residencia (\"¿Dónde vivís?\", \"¿Residís en…?\").",
+  examples: [
+    ["Córdoba Capital", "cordoba, cordoba capital"],
+    ["Rosario / Santa Fe", "rosario, santa fe"],
+    ["CABA / AMBA", "caba, capital federal, buenos aires, amba"],
+  ],
+  howto: "Escribí un término y apretá Enter para convertirlo en etiqueta. Con uno solo alcanza para avanzar, pero conviene sumar los nombres con que aparece tu zona en los avisos. No hace falta repetir con y sin tilde: el bot los trata igual.",
+};
 
 export const MODALITIES = [["remoto", "Remoto"], ["hibrido", "Híbrido"], ["presencial", "Presencial"]];
 const SCHEDULES = [["full_time", "Full time"], ["part_time", "Part time"], ["ambos", "Ambos"]];
@@ -140,40 +178,45 @@ export function renderStep1(root, { store, data, refresh }) {
     otherWrap.hidden = !otherMode;
   }
 
-  function applyCity(cityId) {
+  const currentSuggestion = () =>
+    suggestedHomeTerms(data, answers().location.province_id, answers().location.city_id);
+
+  function applyCity(cityId, previousSuggested) {
     const prov = data.geo.provinces.find((x) => x.id === provinceSelect.value);
     const city = prov?.cities.find((c) => c.id === cityId);
     store.setIn("location.city_id", cityId);
     if (city) {
       store.setIn("location.city_other", "");
-      store.setIn("location.home_terms", [...city.terms]);
+      store.setIn("location.home_terms", nextHomeTerms(answers().location.home_terms, previousSuggested, city.terms));
       store.setIn("location.presencial_zone_terms", [...city.zones]);
     }
     otherInput.value = "";
   }
 
   provinceSelect.addEventListener("change", () => {
+    const previous = currentSuggestion();
     store.setIn("location.province_id", provinceSelect.value);
     otherMode = false;
     const prov = data.geo.provinces.find((x) => x.id === provinceSelect.value);
-    applyCity(prov?.cities[0]?.id ?? "");
+    applyCity(prov?.cities[0]?.id ?? "", previous);
     homeChips.setValues(answers().location.home_terms);
     zoneChips.setValues(answers().location.presencial_zone_terms);
     fillCities();
+    updateSuggestion();
     refresh();
   });
   citySelect.addEventListener("change", () => {
+    const previous = currentSuggestion();
     otherMode = citySelect.value === OTHER_CITY;
     if (otherMode) {
-      store.setIn("location.city_id", "");
-      store.setIn("location.home_terms", []);
-      homeChips.setValues([]);
+      store.setIn("location.city_id", ""); // los términos cargados se conservan
     } else {
-      applyCity(citySelect.value);
+      applyCity(citySelect.value, previous);
       homeChips.setValues(answers().location.home_terms);
       zoneChips.setValues(answers().location.presencial_zone_terms);
     }
     fillCities();
+    updateSuggestion();
     refresh();
   });
 
@@ -184,9 +227,30 @@ export function renderStep1(root, { store, data, refresh }) {
     values: answers().location.home_terms,
     onChange: (values) => {
       store.setIn("location.home_terms", values);
+      updateSuggestion();
       refresh();
     },
   });
+  const homeHelp = el("div", { class: "help", id: "home-terms-help" }, [
+    el("p", { text: HOME_TERMS_HELP.purpose }),
+    el("p", { text: "Ejemplos:" }),
+    el("ul", {}, HOME_TERMS_HELP.examples.map(([place, terms]) => el("li", { text: `${place}: ${terms}` }))),
+    el("p", { text: HOME_TERMS_HELP.howto }),
+  ]);
+  const suggestBtn = el("button", { type: "button", class: "secondary", id: "use-suggested-terms" });
+  suggestBtn.addEventListener("click", () => {
+    store.setIn("location.home_terms", currentSuggestion());
+    homeChips.setValues(answers().location.home_terms);
+    updateSuggestion();
+    refresh();
+  });
+  function updateSuggestion() {
+    const sug = currentSuggestion();
+    suggestBtn.hidden = !sug.length || sameTerms(sug, answers().location.home_terms);
+    suggestBtn.textContent = `Usar los términos sugeridos (${sug.join(", ")})`;
+  }
+  homeWrap.append(homeHelp, suggestBtn);
+  updateSuggestion();
 
   // Modalidades y zonas
   const modWrap = el("fieldset", { class: "field" }, [el("legend", { text: "Modalidades que buscás" })]);

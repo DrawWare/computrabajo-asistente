@@ -47,7 +47,7 @@
   "groups": [
     {
       "id": "senior_gerencial",
-      "label": "Excluir puestos Senior y gerenciales",
+      "label": "Excluir puestos Senior / Lead / Gerenciales",
       "default": true,
       "title": [
         "senior",
@@ -83,7 +83,9 @@
         "tech lead",
         "team lead",
         "líder técnico"
-      ]
+      ],
+      "note": "Activado por defecto para perfiles Jr y Ssr: excluye avisos Senior, Semi Senior (Ssr), Lead y gerenciales. Si sos perfil Senior, Tech Lead o Coordinador/a, desmarcá esta opción para incluir búsquedas de liderazgo y seniority alto.",
+      "important": true
     },
     {
       "id": "solo_comision",
@@ -92,7 +94,10 @@
       "title": [
         "a comisión",
         "por comisión",
-        "comisionable"
+        "comisionable",
+        "100% comisión",
+        "solo comisión",
+        "únicamente comisión"
       ],
       "desc": [
         "a comisión",
@@ -102,7 +107,8 @@
         "trabajo por comisión",
         "empleo por comisión",
         "ingresos por comisión",
-        "empleo comisionable"
+        "empleo comisionable",
+        "únicamente comisión"
       ]
     },
     {
@@ -149,7 +155,13 @@
         "ingresos ilimitados",
         "sé tu propio jefe",
         "revendedora",
-        "revendedor"
+        "revendedor",
+        "herbalife",
+        "avon",
+        "natura",
+        "trabaja desde tu casa sin experiencia",
+        "monotributo excluyente sin sueldo fijo",
+        "pasantía no remunerada"
       ]
     },
     {

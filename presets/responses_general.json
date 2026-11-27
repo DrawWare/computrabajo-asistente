@@ -1,0 +1,21 @@
+[
+  {
+    "id": "trabajo_equipo",
+    "pattern": "trabaj(o|ar) en equipo|trabajo colaborativo",
+    "answer": "Sí, me gusta trabajar en equipo y colaborar con otras áreas.",
+    "option": "Sí"
+  },
+  {
+    "id": "computadora_internet",
+    "pattern": "(computadora|\bpc\b|notebook|laptop) (propia|personal)|equipo (inform[aá]tico )?propio|conexi[oó]n (a|de) internet|internet (estable|en (tu |su )?(casa|domicilio|hogar))",
+    "answer": "Sí, cuento con computadora propia y conexión a internet estable.",
+    "option": "Sí",
+    "when": {
+      "path": "location.modalities",
+      "includes": "remoto"
+    }
+  },
+  {
+    "insert": "knowledge_rules"
+  }
+]

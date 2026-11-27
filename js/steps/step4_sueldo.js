@@ -108,7 +108,10 @@ export function switchRows(answers, data) {
     else if (presetDefaults.has(g.id)) source = "según el rubro";
     else if (g.default_from) source = "calculado de tus respuestas de los pasos 1 y 5 (podés cambiarlo)";
     else source = "valor por defecto";
-    return { id: g.id, label: g.label, on: active.has(g.id), disabled: fixed, source };
+    return {
+      id: g.id, label: g.label, on: active.has(g.id), disabled: fixed, source,
+      note: g.note ?? null, important: Boolean(g.important),
+    };
   });
 }
 
@@ -204,7 +207,14 @@ export function renderStep4(root, { store, data }) {
       store.setIn(`filters.switches.${sw.id}`, cb.checked);
       src.textContent = " (elegido por vos)";
     });
-    switchList.append(el("label", { class: "option", for: id }, [cb, document.createTextNode(` ${sw.label}`), src]));
+    const row = el("label", { class: "option", for: id }, [cb, document.createTextNode(` ${sw.label}`), src]);
+    const card = el("div", { class: sw.important ? "switch-card important" : "switch-card" }, [row]);
+    if (sw.note) {
+      const noteId = `${id}-note`;
+      cb.setAttribute("aria-describedby", noteId);
+      card.append(el("p", { class: "switch-note", id: noteId, text: sw.note }));
+    }
+    switchList.append(card);
   }
 
   const yearsInput = el("input", { type: "number", min: YEARS_MIN, max: YEARS_MAX, step: 1, id: "min-years", inputmode: "numeric" });

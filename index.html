@@ -15,6 +15,7 @@
   <main>
     <nav class="tabs" role="tablist" aria-label="Secciones">
       <button type="button" role="tab" id="tab-asistente" aria-selected="true" aria-controls="panel-asistente" tabindex="0">Asistente</button>
+      <button type="button" role="tab" id="tab-guia" aria-selected="false" aria-controls="panel-guia" tabindex="-1">Guía paso a paso</button>
       <button type="button" role="tab" id="tab-aprendizaje" aria-selected="false" aria-controls="panel-aprendizaje" tabindex="-1">Aprendizaje continuo</button>
     </nav>
 
@@ -33,6 +34,69 @@
         <label class="file-label" for="resume">Retomar desde perfil.json</label>
         <input id="resume" type="file" accept=".json,application/json">
       </div>
+    </section>
+
+    <section id="panel-guia" role="tabpanel" aria-labelledby="tab-guia" hidden>
+      <h2>Guía paso a paso</h2>
+      <p>Del asistente a tu primera postulación en cuatro momentos. Todo corre en tu computadora: esta página no envía nada.</p>
+      <ol class="guide">
+        <li class="guide-step">
+          <svg class="guide-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="6" width="32" height="36" rx="4" class="ic-line"/><path d="M15 16h18M15 23h18M15 30h10" class="ic-line"/><path d="M24 34v8m-5-5 5 5 5-5" class="ic-accent"/></svg>
+          <div>
+            <h3>1. Configurá y bajá el .zip</h3>
+            <p>Completá los 5 pasos de la pestaña <strong>Asistente</strong>. En el paso 6 tocá <strong>Descargar perfil completo (.zip)</strong>. El zip trae tu configuración y los scripts de instalación.</p>
+          </div>
+        </li>
+        <li class="guide-step">
+          <svg class="guide-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="9" width="38" height="30" rx="4" class="ic-line"/><path d="M5 17h38" class="ic-line"/><path d="m12 25 5 4-5 4M21 33h10" class="ic-accent"/></svg>
+          <div>
+            <h3>2. Ejecutá instalar_y_configurar en la carpeta del bot</h3>
+            <p>Descomprimí el zip <strong>dentro de la carpeta del bot</strong> (la que contiene <code>computrabajo_bot</code>). En Windows hacé doble clic en <code>instalar_y_configurar.bat</code>; en macOS o Linux ejecutá <code>chmod +x *.sh &amp;&amp; ./instalar_y_configurar.sh</code>. Instala Python, las dependencias y Chromium, e importa tu perfil.</p>
+          </div>
+        </li>
+        <li class="guide-step">
+          <svg class="guide-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="21" width="24" height="19" rx="3" class="ic-line"/><path d="M17 21v-6a7 7 0 0 1 14 0v6" class="ic-line"/><path d="M24 28v5" class="ic-accent"/></svg>
+          <div>
+            <h3>3. Iniciá sesión una vez en Computrabajo</h3>
+            <p>Al terminar la instalación elegí <strong>[1] Iniciar sesión</strong>. Se abre el navegador del bot: entrá con tu cuenta y volvé a la consola para confirmar. La sesión queda guardada en tu perfil. Después usá <code>iniciar_bot</code>: primero la prueba sin postular, después las postulaciones reales.</p>
+          </div>
+        </li>
+        <li class="guide-step">
+          <svg class="guide-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40h32" class="ic-line"/><rect x="11" y="26" width="6" height="12" class="ic-accent"/><rect x="21" y="18" width="6" height="20" class="ic-accent"/><rect x="31" y="10" width="6" height="28" class="ic-accent"/></svg>
+          <div>
+            <h3>4. Revisá métricas y respondé preguntas nuevas</h3>
+            <p>Las preguntas que el bot no supo responder quedan en <code>pendientes.csv</code>. Cargalo en la pestaña <strong>Aprendizaje continuo</strong> junto con tu <code>responses.json</code>, respondelas y descargá el <code>responses.json</code> actualizado.</p>
+          </div>
+        </li>
+      </ol>
+      <h3>Detalle por sistema</h3>
+      <details class="howto-os">
+        <summary>Windows</summary>
+        <ol>
+          <li>Descomprimí el zip dentro de la carpeta del bot. Queda una carpeta <code>perfil_&lt;tu-perfil&gt;</code>.</li>
+          <li>Doble clic en <code>instalar_y_configurar.bat</code>. Si falta Python, el script te lo avisa: instalalo desde python.org marcando «Add python.exe to PATH».</li>
+          <li>Elegí [1] para iniciar sesión.</li>
+          <li>Para usar el bot: doble clic en <code>iniciar_bot.bat</code>.</li>
+        </ol>
+      </details>
+      <details class="howto-os">
+        <summary>macOS</summary>
+        <ol>
+          <li>Descomprimí el zip dentro de la carpeta del bot.</li>
+          <li>En Terminal, dentro de <code>perfil_&lt;tu-perfil&gt;</code>: <code>chmod +x *.sh &amp;&amp; ./instalar_y_configurar.sh</code></li>
+          <li>Elegí [1] para iniciar sesión.</li>
+          <li>Para usar el bot: <code>./iniciar_bot.sh</code></li>
+        </ol>
+      </details>
+      <details class="howto-os">
+        <summary>Linux</summary>
+        <ol>
+          <li>Descomprimí el zip dentro de la carpeta del bot. Necesitás <code>python3</code> y <code>python3-venv</code>.</li>
+          <li>En una terminal, dentro de <code>perfil_&lt;tu-perfil&gt;</code>: <code>chmod +x *.sh &amp;&amp; ./instalar_y_configurar.sh</code></li>
+          <li>Elegí [1] para iniciar sesión.</li>
+          <li>Para usar el bot: <code>./iniciar_bot.sh</code></li>
+        </ol>
+      </details>
     </section>
 
     <section id="panel-aprendizaje" role="tabpanel" aria-labelledby="tab-aprendizaje" hidden></section>

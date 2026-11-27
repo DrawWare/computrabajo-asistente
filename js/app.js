@@ -30,6 +30,16 @@ const STEPS = [
 
 const $ = (id) => document.getElementById(id);
 
+/** Lleva la vista arriba y pone el foco en el encabezado (accesibilidad). Suave salvo "reducir movimiento". */
+function focusView(heading) {
+  const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  if (heading) {
+    if (!heading.hasAttribute("tabindex")) heading.setAttribute("tabindex", "-1");
+    heading.focus({ preventScroll: true });
+  }
+}
+
 async function main() {
   const statusEl = $("app-status");
   let data;
@@ -97,12 +107,14 @@ async function main() {
     const step = Math.max(1, store.getState().step - 1);
     store.setStep(step);
     renderStep();
+    focusView($("step-root").querySelector("h2"));
   });
   $("next").addEventListener("click", () => {
     const step = Math.min(STEPS.length, store.getState().step + 1);
     store.flush();
     store.setStep(step);
     renderStep();
+    focusView($("step-root").querySelector("h2"));
   });
   $("clear").addEventListener("click", () => {
     if (!window.confirm("¿Borrar todo lo que cargaste en este navegador?")) return;
@@ -137,6 +149,7 @@ async function main() {
         t.tabIndex = selected ? 0 : -1;
         document.getElementById(t.getAttribute("aria-controls")).hidden = !selected;
       }
+      focusView(document.getElementById(tab.getAttribute("aria-controls")).querySelector("h2"));
     });
   }
 
